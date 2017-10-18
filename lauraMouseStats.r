@@ -27,7 +27,7 @@ doitAll()
 dat <- read.csv("~/lauraMouse/data/bai1.csv")
 dat <- dat %>% rename(Metadata_Frame = GENOTYPE, Metadata_Treatment = TREATMENT, Metadata_Mouse = MOUSE..)
 dat <- dat %>% filter(Metadata_Mouse != 'AV3')
-myLabels <- c(expression("Villin-CRE BAI1"^{FL/FL}),expression("Villin-CRE BAI1"^{Delta/Delta}))
+myLabels <- c(expression("Control,"~italic("Bai1"^{"+/+"})),expression(italic("Villin-cre, Bai1"^{"\u2013/\u2013"})))
 myLevels <- c("WT","KO")
 myColors <- c("yellow","red")
 OUTDIR <- "~/lauraMouse/bai1"
@@ -35,7 +35,7 @@ doitAll()
 
 dat <- read.csv("~/lauraMouse/data/tg2.csv")
 dat <- dat %>% rename(Metadata_Frame = GENOTYPE, Metadata_Treatment = TREATMENT, Metadata_Mouse = MOUSE..)
-myLabels <- c(expression("Villin-CRE BAI1"^{WT/WT}),expression("Villin-CRE BAI1"^{WT/Tg}))
+myLabels <- c(expression("Control,"~italic("Bai1"^{"WT/WT"})),expression(italic("Villin-cre, Bai1"^{"WT/Tg"})))
 myLevels <- c("WT","Tg")
 myColors <- c("yellow","cyan")
 OUTDIR <- "~/lauraMouse/tg2"
