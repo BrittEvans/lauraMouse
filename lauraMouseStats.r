@@ -41,6 +41,14 @@ myColors <- c("yellow","cyan")
 OUTDIR <- "~/lauraMouse/tg2"
 doitAll()
 
+dat <- read.csv("~/lauraMouse/data/villinCreBelmo20171016.csv")
+dat <- dat %>% rename(Metadata_Frame = GENOTYPE, Metadata_Treatment = TREATMENT, Metadata_Mouse = MOUSE..)
+myLabels <- c(expression("Control,"~italic("BELMO"^{"WT/WT"})),expression(italic("Villin-cre, BELMO"^{"WT/Tg"})))
+myLevels <- c("WT","BELMO")
+myColors <- c("yellow","green")
+OUTDIR <- "~/lauraMouse/belmo2"
+doitAll()
+
 
 doitAll <- function() {
   # Read and group the data
