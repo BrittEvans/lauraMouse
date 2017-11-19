@@ -49,6 +49,13 @@ myColors <- c("yellow","green")
 OUTDIR <- "~/lauraMouse/belmo2"
 doitAll()
 
+dat <- read.csv("~/lauraMouse/data/caspase.csv")
+dat <- dat %>% rename(Metadata_Frame = Secondary.Treatment, Metadata_Treatment = TREATMENT, Metadata_Mouse = MOUSE..)
+myLabels <- c("DMSO","zVAD")
+myLevels <- c("DMSO","zVAD")
+myColors <- c("yellow","#e0781d")
+OUTDIR <- "~/lauraMouse/caspase"
+doitAll()
 
 doitAll <- function() {
   # Read and group the data
@@ -134,7 +141,7 @@ makeDotplots <- function(myData, yLabel, fileName) {
           panel.background = element_rect(fill = "transparent", colour= NA),
           legend.text=element_text(size=14)) +
     labs(y=yLabel,x="Treatment") +
-    scale_fill_manual(name="Genotype", labels=myLabels, values=myColors)
+    scale_fill_manual(name="", labels=myLabels, values=myColors)
   ggsave(paste(OUTDIR, fileName, sep="/"), bg="transparent")
 }
 
@@ -153,7 +160,7 @@ diffPlots <- function(myData, fileName) {
                tunelDiff = tunel.uv - tunel.nouv) %>%
         select(mouse,genotype,eduDiff,caspDiff,tunelDiff)
   
-    diffGraph <- melt(diffs)
+    diffGraph <- melt(diffs,id.vars=c("mouse","genotype"))
     diffGraph$variable <- factor(diffGraph$variable, levels=c("eduDiff","caspDiff","tunelDiff"),
                                  labels=c("EdU","Caspase-3","TUNEL"))
     diffError <- diffGraph %>%
@@ -174,7 +181,7 @@ diffPlots <- function(myData, fileName) {
             panel.background = element_rect(fill = "transparent", colour= NA),
             legend.text=element_text(size=14)) +
       labs(y="UV Intensity - NOUV Intensity",x="") +
-      scale_fill_manual(values=myColors, name="Genotype", labels=myLabels)
+      scale_fill_manual(values=myColors, name="", labels=myLabels)
       ggsave(filename=fileName, path = OUTDIR, width=10, height=7, bg="transparent")
 
     output <- data.frame("variable" = c("edu","casp","tunel"))
@@ -215,8 +222,8 @@ newPlotsWithoutBars <- function(myData, yLabel, fileName) {
    geom_line(aes(x=treatment, y=myColumn, colour=genotype, group=mouse), data=myData, size=1.5) +
    geom_point(aes(x=treatment, y=myColumn, colour=genotype, fill=genotype), colour="black",pch=21, size=5, data=myData) +
    facet_wrap(~ genotype, labeller=label_parsed) +
-   scale_colour_manual(name="Genotype", values=myColors, guide=FALSE) +
-   scale_fill_manual(name="Genotype", values=myColors, guide=FALSE) +
+   scale_colour_manual(name="", values=myColors, guide=FALSE) +
+   scale_fill_manual(name="", values=myColors, guide=FALSE) +
     theme_classic(base_size=14) +
     theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
           legend.text.align = 0,
