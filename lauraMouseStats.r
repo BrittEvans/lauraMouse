@@ -74,7 +74,13 @@ doitAll <- function() {
                edu = mean(EDU.Intensity.corrected),
                eduSE = sd(EDU.Intensity.corrected)/sqrt(count),
                tunel = mean(TUNEL.Intensity.Corrected),
-               tunelSE = sd(TUNEL.Intensity.Corrected)/sqrt(count) )
+               tunelSE = sd(TUNEL.Intensity.Corrected)/sqrt(count),
+               caspArea = mean(CASP.area.corrected),
+               caspAreaSE = sd(CASP.area.corrected)/sqrt(count),
+               eduArea = mean(EDU.area.corrected),
+               eduAreaSE = sd(EDU.area.corrected)/sqrt(count),
+               tunelArea = mean(TUNEL.area.Corrected),
+               tunelAreaSE = sd(TUNEL.area.Corrected)/sqrt(count) )
   
   # Write out the csv
   write.csv(grouped, paste(OUTDIR,"metrics.csv",sep="/"))
@@ -83,7 +89,7 @@ doitAll <- function() {
   tukeys <- data.frame("label"=c("variable","diff","lwr","upr","pVal"))
   pVals <- data.frame("label"=c("genotype","treatment","interaction"))
   writeHeader <- TRUE
-  for (x in c("area","perimeter","casp","edu","tunel","count")) {
+  for (x in c("area","perimeter","casp","edu","tunel","count","caspArea","eduArea","tunelArea")) {
     a <- aov(get(x) ~ genotype*treatment, data=grouped)
     pVals[x] <- summary(a)[[1]][["Pr(>F)"]][1:3]
     tky = cbind(x, TukeyHSD(a)$`genotype:treatment`)
@@ -92,31 +98,44 @@ doitAll <- function() {
   }
   write.csv(pVals,paste(OUTDIR,"anova.csv",sep="/"))
   
-  makeDotplots( grouped %>% select (casp, treatment, genotype) %>% rename(myColumn=casp), "Caspase-3 Intensity/hoechst Intensity", "casp.png")
-  newPlotsWithBars( grouped %>% select (casp, treatment, genotype) %>% rename(myColumn=casp), "Caspase-3 Intensity/hoechst Intensity", "casp-panels-bars.png")
-  newPlotsWithoutBars( grouped %>% select (casp, treatment, genotype) %>% rename(myColumn=casp), "Caspase-3 Intensity/hoechst Intensity", "casp-panels-noBars.png")
+  makeDotplots( grouped %>% select (casp, treatment, genotype, mouse) %>% rename(myColumn=casp), "Caspase-3 Intensity/hoechst Intensity", "casp.png")
+  newPlotsWithBars( grouped %>% select (casp, treatment, genotype, mouse) %>% rename(myColumn=casp), "Caspase-3 Intensity/hoechst Intensity", "casp-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (casp, treatment, genotype, mouse) %>% rename(myColumn=casp), "Caspase-3 Intensity/hoechst Intensity", "casp-panels-noBars.png")
 
-  makeDotplots( grouped %>% select (edu, treatment, genotype) %>% rename(myColumn=edu), "EdU Intensity/hoechst Intensity", "edu.png")
-  newPlotsWithBars( grouped %>% select (edu, treatment, genotype) %>% rename(myColumn=edu), "EdU Intensity/hoechst Intensity", "edu-panels-bars.png")
-  newPlotsWithoutBars( grouped %>% select (edu, treatment, genotype) %>% rename(myColumn=edu), "EdU Intensity/hoechst Intensity", "edu-panels-noBars.png")
+  makeDotplots( grouped %>% select (caspArea, treatment, genotype, mouse) %>% rename(myColumn=caspArea), "Caspase-3 Intensity/Area", "caspArea.png")
+  newPlotsWithBars( grouped %>% select (caspArea, treatment, genotype, mouse) %>% rename(myColumn=caspArea), "Caspase-3 Intensity/Area", "caspArea-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (caspArea, treatment, genotype, mouse) %>% rename(myColumn=caspArea), "Caspase-3 Intensity/Area", "caspArea-panels-noBars.png")
 
-  makeDotplots( grouped %>% select (tunel, treatment, genotype) %>% rename(myColumn=tunel), "TUNEL Intensity/hoechst Intensity", "tunel.png")
-  newPlotsWithBars( grouped %>% select (tunel, treatment, genotype) %>% rename(myColumn=tunel), "TUNEL Intensity/hoechst Intensity", "tunel-panels-bars.png")
-  newPlotsWithoutBars( grouped %>% select (tunel, treatment, genotype) %>% rename(myColumn=tunel), "TUNEL Intensity/hoechst Intensity", "tunel-panels-noBars.png")
+  makeDotplots( grouped %>% select (edu, treatment, genotype, mouse) %>% rename(myColumn=edu), "EdU Intensity/hoechst Intensity", "edu.png")
+  newPlotsWithBars( grouped %>% select (edu, treatment, genotype, mouse) %>% rename(myColumn=edu), "EdU Intensity/hoechst Intensity", "edu-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (edu, treatment, genotype, mouse) %>% rename(myColumn=edu), "EdU Intensity/hoechst Intensity", "edu-panels-noBars.png")
 
-  makeDotplots( grouped %>% select (area, treatment, genotype) %>% rename(myColumn=area), "Area", "area.png")
-  newPlotsWithBars( grouped %>% select (area, treatment, genotype) %>% rename(myColumn=area), "Area", "area-panels-bars.png")
-  newPlotsWithoutBars( grouped %>% select (area, treatment, genotype) %>% rename(myColumn=area), "Area", "area-panels-noBars.png")
+  makeDotplots( grouped %>% select (eduArea, treatment, genotype, mouse) %>% rename(myColumn=eduArea), "EdU Intensity/Area", "eduArea.png")
+  newPlotsWithBars( grouped %>% select (eduArea, treatment, genotype, mouse) %>% rename(myColumn=eduArea), "EdU Intensity/Area", "eduArea-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (eduArea, treatment, genotype, mouse) %>% rename(myColumn=eduArea), "EdU Intensity/Area", "eduArea-panels-noBars.png")
 
-  makeDotplots( grouped %>% select (perimeter, treatment, genotype) %>% rename(myColumn=perimeter), "Perimeter", "perimeter.png")
-  newPlotsWithBars( grouped %>% select (perimeter, treatment, genotype) %>% rename(myColumn=perimeter), "Perimeter", "perimeter-panels-bars.png")
-  newPlotsWithoutBars( grouped %>% select (perimeter, treatment, genotype) %>% rename(myColumn=perimeter), "Perimeter", "perimeter-panels-noBars.png")
+  makeDotplots( grouped %>% select (tunel, treatment, genotype, mouse) %>% rename(myColumn=tunel), "TUNEL Intensity/hoechst Intensity", "tunel.png")
+  newPlotsWithBars( grouped %>% select (tunel, treatment, genotype, mouse) %>% rename(myColumn=tunel), "TUNEL Intensity/hoechst Intensity", "tunel-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (tunel, treatment, genotype, mouse) %>% rename(myColumn=tunel), "TUNEL Intensity/hoechst Intensity", "tunel-panels-noBars.png")
 
-  makeDotplots( grouped %>% select (count, treatment, genotype) %>% rename(myColumn=count), "Count", "count.png")
-  newPlotsWithBars( grouped %>% select (count, treatment, genotype) %>% rename(myColumn=count), "Count", "count-panels-bars.png")
-  newPlotsWithoutBars( grouped %>% select (count, treatment, genotype) %>% rename(myColumn=count), "Count", "count-panels-noBars.png")
+  makeDotplots( grouped %>% select (tunelArea, treatment, genotype, mouse) %>% rename(myColumn=tunelArea), "TUNEL Intensity/Area", "tunelArea.png")
+  newPlotsWithBars( grouped %>% select (tunelArea, treatment, genotype, mouse) %>% rename(myColumn=tunelArea), "TUNEL Intensity/Area", "tunelArea-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (tunelArea, treatment, genotype, mouse) %>% rename(myColumn=tunelArea), "TUNEL Intensity/Area", "tunelArea-panels-noBars.png")
+
+  makeDotplots( grouped %>% select (area, treatment, genotype, mouse) %>% rename(myColumn=area), "Area", "area.png")
+  newPlotsWithBars( grouped %>% select (area, treatment, genotype, mouse) %>% rename(myColumn=area), "Area", "area-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (area, treatment, genotype, mouse) %>% rename(myColumn=area), "Area", "area-panels-noBars.png")
+
+  makeDotplots( grouped %>% select (perimeter, treatment, genotype, mouse) %>% rename(myColumn=perimeter), "Perimeter", "perimeter.png")
+  newPlotsWithBars( grouped %>% select (perimeter, treatment, genotype, mouse) %>% rename(myColumn=perimeter), "Perimeter", "perimeter-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (perimeter, treatment, genotype, mouse) %>% rename(myColumn=perimeter), "Perimeter", "perimeter-panels-noBars.png")
+
+  makeDotplots( grouped %>% select (count, treatment, genotype, mouse) %>% rename(myColumn=count), "Count", "count.png")
+  newPlotsWithBars( grouped %>% select (count, treatment, genotype, mouse) %>% rename(myColumn=count), "Count", "count-panels-bars.png")
+  newPlotsWithoutBars( grouped %>% select (count, treatment, genotype, mouse) %>% rename(myColumn=count), "Count", "count-panels-noBars.png")
   
   diffPlots( grouped, "intensityDiff.png")
+  areaDiffPlots( grouped, "areaDiff.png")
 }
 
 
@@ -130,8 +149,8 @@ makeDotplots <- function(myData, yLabel, fileName) {
   ggplot() + 
     geom_dotplot(aes(y = myColumn, x = treatment, fill = genotype), data = myData,
                  binaxis='y', stackdir='center', dotsize=1, stackgroups = TRUE, position="dodge") +
-    geom_errorbar(aes(x = treatment,  fill = genotype, ymin=m-se, ymax=m), width=.2, position=position_dodge(.9), data=grouped2) +
-    geom_errorbar(aes(x = treatment,  fill = genotype, y=m, ymin=m, ymax=m+se), width=.2, position=position_dodge(.9), data=grouped2) +
+    geom_errorbar(aes(x = treatment, ymin=m-se, ymax=m), width=.2, position=position_dodge(.9), data=grouped2) +
+    geom_errorbar(aes(x = treatment, ymin=m, ymax=m+se), width=.2, position=position_dodge(.9), data=grouped2) +
     theme_classic(base_size=14) +
     theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
           legend.text.align = 0,
@@ -170,8 +189,8 @@ diffPlots <- function(myData, fileName) {
     ggplot() + 
       geom_dotplot(aes(y = value, x = variable, fill = genotype), data = diffGraph,
                    binaxis='y', stackdir='center', dotsize=1, stackgroups = TRUE, position="dodge") +
-      geom_errorbar(aes(x = variable,  fill = genotype, ymin=m-se, ymax=m), width=.2, position=position_dodge(.9), data=diffError) +
-      geom_errorbar(aes(x = variable,  fill = genotype, y=m, ymin=m, ymax=m+se), width=.2, position=position_dodge(.9), data=diffError) +
+      geom_errorbar(aes(x = variable, fill=genotype, ymin=m-se, ymax=m), width=.2, position=position_dodge(.9), data=diffError) +
+      geom_errorbar(aes(x = variable, fill=genotype, ymin=m, ymax=m+se), width=.2, position=position_dodge(.9), data=diffError) +
       theme_classic(base_size=14) +
       theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
             legend.text.align = 0,
@@ -187,6 +206,45 @@ diffPlots <- function(myData, fileName) {
     output <- data.frame("variable" = c("edu","casp","tunel"))
     output["pValue"] <- c(t.test(diffs$eduDiff)$p.value, t.test(diffs$caspDiff)$p.value, t.test(diffs$tunelDiff)$p.value)
     write.csv(output,paste(OUTDIR,"intensityDifference.csv",sep="/"))
+}
+
+areaDiffPlots <- function(myData, fileName) {
+    uv <- filter(myData, treatment == "UV")
+    nouv <- filter(myData, treatment == "NOUV")
+    diffs <- inner_join(uv, nouv, by=c("mouse","genotype"), suffix=c(".uv",".nouv")) %>%
+        ungroup() %>%
+        mutate(eduAreaDiff = eduArea.uv - eduArea.nouv,
+			   caspAreaDiff = caspArea.uv - caspArea.nouv,
+			   tunelAreaDiff = tunelArea.uv - tunelArea.nouv) %>%
+        select(mouse,genotype,eduAreaDiff,caspAreaDiff,tunelAreaDiff)
+  
+    diffGraph <- melt(diffs,id.vars=c("mouse","genotype"))
+    diffGraph$variable <- factor(diffGraph$variable, levels=c("eduAreaDiff","caspAreaDiff","tunelAreaDiff"),
+                                 labels=c("EdU Area","Caspase-3 Area","TUNEL Area"))
+    diffError <- diffGraph %>%
+      group_by(genotype,variable) %>%
+      summarise( m = mean(value), se = sd(value)/sqrt(n()) )
+
+    ggplot() + 
+      geom_dotplot(aes(y = value, x = variable, fill = genotype), data = diffGraph,
+                   binaxis='y', stackdir='center', dotsize=1, stackgroups = TRUE, position="dodge") +
+      geom_errorbar(aes(x = variable, fill=genotype, ymin=m-se, ymax=m), width=.2, position=position_dodge(.9), data=diffError) +
+      geom_errorbar(aes(x = variable, fill=genotype, ymin=m, ymax=m+se), width=.2, position=position_dodge(.9), data=diffError) +
+      theme_classic(base_size=14) +
+      theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
+            legend.text.align = 0,
+            axis.line.y = element_line(colour = 'black', size=0.5, linetype='solid'),
+            rect = element_rect(fill = "transparent"),
+            plot.background = element_rect(fill = "transparent", colour= NA),
+            panel.background = element_rect(fill = "transparent", colour= NA),
+            legend.text=element_text(size=14)) +
+      labs(y="UV Intensity - NOUV Intensity",x="") +
+      scale_fill_manual(values=myColors, name="", labels=myLabels)
+      ggsave(filename=fileName, path = OUTDIR, width=10, height=7, bg="transparent")
+
+    output <- data.frame("variable" = c("eduArea","caspArea","tunelArea"))
+    output["pValue"] <- c(t.test(diffs$eduAreaDiff)$p.value, t.test(diffs$caspAreaDiff)$p.value, t.test(diffs$tunelAreaDiff)$p.value)
+    write.csv(output,paste(OUTDIR,"areaDifference.csv",sep="/"))
 }
 
 newPlotsWithBars <- function(myData, yLabel, fileName) {
