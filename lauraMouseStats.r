@@ -57,6 +57,14 @@ myColors <- c("yellow","#e0781d")
 OUTDIR <- "~/lauraMouse/caspase"
 doitAll()
 
+dat <- read.csv("~/lauraMouse/data/caspase20180223.csv")
+dat <- dat %>% rename(Metadata_Frame = Secondary.Treatment, Metadata_Treatment = TREATMENT, Metadata_Mouse = MOUSE..)
+myLabels <- c("DMSO","zVAD","QVD")
+myLevels <- c("DMSO","zVAD","QVD")
+myColors <- c("red","blue","green")
+OUTDIR <- "~/lauraMouse/caspase20180223"
+doitAll()
+
 doitAll <- function() {
   # Read and group the data
   grouped <- dat %>%
