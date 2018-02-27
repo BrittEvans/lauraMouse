@@ -157,8 +157,8 @@ makeDotplots <- function(myData, yLabel, fileName) {
   ggplot() + 
     geom_dotplot(aes(y = myColumn, x = treatment, fill = genotype), data = myData,
                  binaxis='y', stackdir='center', dotsize=1, stackgroups = TRUE, position="dodge") +
-    geom_errorbar(aes(x = treatment, ymin=m-se, ymax=m), width=.2, position=position_dodge(.9), data=grouped2) +
-    geom_errorbar(aes(x = treatment, ymin=m, ymax=m+se), width=.2, position=position_dodge(.9), data=grouped2) +
+    geom_errorbar(aes(x = treatment, ymin=m-se, ymax=m, fill=genotype), width=.2, position=position_dodge(.9), data=grouped2) +
+    geom_errorbar(aes(x = treatment, ymin=m, ymax=m+se, fill=genotype), width=.2, position=position_dodge(.9), data=grouped2) +
     theme_classic(base_size=14) +
     theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
           legend.text.align = 0,
