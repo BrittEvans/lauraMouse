@@ -10,6 +10,14 @@ myLevels <- c("WT","Tg")
 myColors <- c("yellow","cyan")
 OUTDIR <- "~/lauraMouse/timeplots/"
 
+dat <- read.csv("~/lauraMouse/samantha/villinCreElmo20180716.csv")
+#dat <- dat %>% rename(Metadata_Frame = Metadata_Genotype)
+myLabels <- c("Control",expression(paste(italic("Villin-cre, ELMO1"^{"FL/FL"}),italic("ELMO2"^{"FL/FL"}),sep=" ")))
+#myLabels <- c("Control","Bai1")
+myLevels <- c("WT","KO")
+myColors <- c("yellow","purple")
+OUTDIR <- "~/lauraMouse/samantha/"
+
 myData <- dat %>%
   mutate(genotype = factor(GENOTYPE, levels = myLevels, labels=myLabels)) %>%
   rename(mouse = MOUSE.., treatment = TREATMENT) %>%

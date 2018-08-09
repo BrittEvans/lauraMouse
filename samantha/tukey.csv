@@ -1,0 +1,451 @@
+x,diff,lwr,upr,p adj
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR-Control:12HR,eduDiff,0.00228115154749565,-0.00252682879381794,0.00708913188880925,0.604404319244653
+Control:24HR-Control:12HR,eduDiff,0.00212583299232383,-0.00314104558563386,0.00739271157028151,0.73949144398515
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:12HR,eduDiff,-0.000255057316314107,-0.00481630796347352,0.00430619333084531,0.999953449656725
+Control:6HR-Control:12HR,eduDiff,-0.000477228084440402,-0.00574410666239809,0.00478965049351728,0.999503912247109
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:12HR,eduDiff,0.00392187262794468,-0.000639378019214738,0.00848312327510409,0.106566182427671
+Control:24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduDiff,-0.000155318555171826,-0.00496329889648542,0.00465266178614177,0.999996945668175
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduDiff,-0.00253620886380976,-0.00655885382374851,0.00148643609612898,0.330772540392971
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduDiff,-0.00275837963193606,-0.00756635997324965,0.00204960070937754,0.420877176631857
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduDiff,0.00164072108044902,-0.00238192387948972,0.00566336604038777,0.731682648720614
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:24HR,eduDiff,-0.00238089030863793,-0.00694214095579735,0.00218036033852148,0.513579382880034
+Control:6HR-Control:24HR,eduDiff,-0.00260306107676423,-0.00786993965472191,0.00266381750119346,0.566218322096038
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:24HR,eduDiff,0.00179603963562085,-0.00276521101153857,0.00635729028278026,0.757368766720998
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,eduDiff,-0.000222170768126295,-0.00478342141528571,0.00433907987903312,0.999976491409793
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,eduDiff,0.00417692994425878,0.000452684386098745,0.00790117550241882,0.0256854451340657
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:6HR,eduDiff,0.00439910071238508,-0.000162149934774336,0.00896035135954449,0.0606990966266641
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR-Control:12HR,caspDiff,61.1749536710784,2.48317533869459,119.866732003462,0.0396621365813827
+Control:24HR-Control:12HR,caspDiff,60.3917402866191,-3.90188157885995,124.685362152098,0.0695769819370941
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:12HR,caspDiff,18.2732896122925,-37.406620224523,73.953199449108,0.863727960843673
+Control:6HR-Control:12HR,caspDiff,25.5132012934369,-38.7804205720421,89.806823158916,0.751856684708412
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:12HR,caspDiff,71.1143897464109,15.4344799095954,126.794299583226,0.0110171203288161
+Control:24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspDiff,-0.783213384459257,-59.474991716843,57.9085649479245,0.999999962961421
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspDiff,-42.9016640587859,-92.0067288756902,6.20340075811841,0.0990105500587398
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspDiff,-35.6617523776414,-94.3535307100252,23.0300259547424,0.365419709836603
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspDiff,9.93943607533252,-39.1656287415718,59.0445008922368,0.979353714614533
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:24HR,caspDiff,-42.1184506743266,-97.7983605111421,13.5614591624889,0.181884867651753
+Control:6HR-Control:24HR,caspDiff,-34.8785389931822,-99.1721608586612,29.4150828722969,0.475820830552404
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:24HR,caspDiff,10.7226494597918,-44.9572603770237,66.4025592966073,0.983361010856005
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,caspDiff,7.23991168114446,-48.4399981556711,62.91982151796,0.997210997375766
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,caspDiff,52.8411001341184,7.37864412599446,98.3035561422423,0.0205522637471682
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:6HR,caspDiff,45.6011884529739,-10.0787213838416,101.281098289789,0.13206634233876
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR-Control:12HR,tunelDiff,0.00221991453625269,-0.00100822163866738,0.00544805071117277,0.254463288920509
+Control:24HR-Control:12HR,tunelDiff,0.00257184632471043,-0.000964399678693907,0.00610809232811477,0.210212995924694
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:12HR,tunelDiff,-0.00109005922751387,-0.00415253810049323,0.00197241964546548,0.82179531294158
+Control:6HR-Control:12HR,tunelDiff,-0.0012659285843499,-0.00480217458775424,0.00227031741905444,0.818506763335535
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:12HR,tunelDiff,0.00389784520285336,0.00083536632987401,0.00696032407583271,0.0112828135333889
+Control:24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelDiff,0.000351931788457737,-0.00287620438646234,0.00358006796337782,0.998790533125819
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelDiff,-0.00330997376376657,-0.00601082626153081,-0.000609121266002328,0.0145661052873336
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelDiff,-0.00348584312060259,-0.00671397929552267,-0.000257706945682512,0.0322859917598686
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelDiff,0.00167793066660067,-0.00102292183116358,0.00437878316436491,0.344465568153512
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:24HR,tunelDiff,-0.00366190555222431,-0.00672438442520366,-0.000599426679244957,0.0171266955949342
+Control:6HR-Control:24HR,tunelDiff,-0.00383777490906033,-0.00737402091246467,-0.000301528905655988,0.0313375461533539
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:24HR,tunelDiff,0.00132599887814293,-0.00173647999483642,0.00438847775112228,0.684472364838741
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,tunelDiff,-0.00017586935683602,-0.00323834822981537,0.00288660951614333,0.999946905868005
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,tunelDiff,0.00498790443036724,0.0024874009014162,0.00748840795931827,0.00031833077404142
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:6HR,tunelDiff,0.00516377378720326,0.00210129491422391,0.00822625266018261,0.0013425557845731
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR-Control:12HR,eduAreaDiff,-1.53707202712461e-06,-1.16816846766382e-05,8.60754062238902e-06,0.994323946406509
+Control:24HR-Control:12HR,eduAreaDiff,-1.81858989677067e-06,-1.29314562673524e-05,9.29427647381106e-06,0.991934999397526
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:12HR,eduAreaDiff,-2.98497718881672e-06,-1.26090017746023e-05,6.63904739696883e-06,0.888032872508582
+Control:6HR-Control:12HR,eduAreaDiff,-3.74665445228299e-06,-1.48595208228647e-05,7.36621191829874e-06,0.850758787012714
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:12HR,eduAreaDiff,2.38035200774966e-06,-7.24367257803589e-06,1.20043765935352e-05,0.952469495729544
+Control:24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduAreaDiff,-2.81517869646061e-07,-1.04261305191597e-05,9.86309477986757e-06,0.999998567551055
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduAreaDiff,-1.44790516169211e-06,-9.93549705021211e-06,7.03968672682788e-06,0.990272858530977
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduAreaDiff,-2.20958242515838e-06,-1.2354195074672e-05,7.93503022435525e-06,0.971799108664306
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,eduAreaDiff,3.91742403487427e-06,-4.57016785364572e-06,1.24050159233943e-05,0.629419149168288
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:24HR,eduAreaDiff,-1.16638729204605e-06,-1.07904118778316e-05,8.4576372937395e-06,0.997998212742364
+Control:6HR-Control:24HR,eduAreaDiff,-1.92806455551232e-06,-1.30409309260941e-05,9.18480181506941e-06,0.989507415139786
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:24HR,eduAreaDiff,4.19894190452033e-06,-5.42508268126522e-06,1.38229664903059e-05,0.67813338009622
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,eduAreaDiff,-7.61677263466265e-07,-1.03857018492518e-05,8.86234732231929e-06,0.99974321487684
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,eduAreaDiff,5.36532919656638e-06,-2.4926539724919e-06,1.32233123656247e-05,0.260407240787933
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:6HR,eduAreaDiff,6.12700646003265e-06,-3.4970181257529e-06,1.57510310458182e-05,0.321848926691751
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR-Control:12HR,caspAreaDiff,1.44838267120234e-07,-1.34754652392803e-05,1.37651417735207e-05,0.999999988090655
+Control:24HR-Control:12HR,caspAreaDiff,3.07215522599609e-06,-1.18481397150484e-05,1.79924501670406e-05,0.977781099133987
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:12HR,caspAreaDiff,1.40156226814798e-06,-1.1519792182753e-05,1.4322916719049e-05,0.9988195217521
+Control:6HR-Control:12HR,caspAreaDiff,5.70108821286621e-08,-1.48632840589159e-05,1.49773058231732e-05,0.999999999928616
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:12HR,caspAreaDiff,-5.12651134344652e-07,-1.34340055852457e-05,1.24087033165563e-05,0.999991507725909
+Control:24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspAreaDiff,2.92731695887586e-06,-1.06929865475246e-05,1.65476204652764e-05,0.973339691910044
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspAreaDiff,1.25672400102775e-06,-1.01388394920395e-05,1.26522874940949e-05,0.998722135594148
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspAreaDiff,-8.7827384991572e-08,-1.37081308913921e-05,1.35324761214089e-05,0.999999999022971
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,caspAreaDiff,-6.57489401464886e-07,-1.20530528945321e-05,1.07380740916023e-05,0.999945662437178
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:24HR,caspAreaDiff,-1.67059295784811e-06,-1.45919474087491e-05,1.12507614930529e-05,0.997284574326921
+Control:6HR-Control:24HR,caspAreaDiff,-3.01514434386743e-06,-1.7935439284912e-05,1.19051505971771e-05,0.979497366619709
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:24HR,caspAreaDiff,-3.58480636034074e-06,-1.65061608112417e-05,9.33654809056026e-06,0.925629515114115
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,caspAreaDiff,-1.34455138601932e-06,-1.42659058369203e-05,1.15768030648817e-05,0.999032601676296
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,caspAreaDiff,-1.91421340249263e-06,-1.24644551326086e-05,8.63602832762329e-06,0.987194889527066
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:6HR,caspAreaDiff,-5.69662016473314e-07,-1.34910164673743e-05,1.23516924344277e-05,0.999985661661121
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR-Control:12HR,tunelAreaDiff,3.18830883275118e-07,-1.28048486579664e-05,1.34425104245167e-05,0.999999262123917
+Control:24HR-Control:12HR,tunelAreaDiff,3.2177714651875e-06,-1.11584991792266e-05,1.75940421096016e-05,0.968393986724115
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:12HR,tunelAreaDiff,1.44530575000311e-06,-1.100490983974e-05,1.38955213397462e-05,0.998368145434705
+Control:6HR-Control:12HR,tunelAreaDiff,3.6175998257814e-07,-1.4014510661836e-05,1.47380306269923e-05,0.999999120662094
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:12HR,tunelAreaDiff,-2.26338452726229e-08,-1.24728494350157e-05,1.24275817444705e-05,0.999999999998331
+Control:24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelAreaDiff,2.89894058191238e-06,-1.02247389593292e-05,1.60226201231539e-05,0.970085797418131
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelAreaDiff,1.126474866728e-06,-9.85358320647188e-06,1.21065329399279e-05,0.999096256040983
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelAreaDiff,4.29290993030225e-08,-1.30807504419385e-05,1.31666086405446e-05,0.999999999967197
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):12HR,tunelAreaDiff,-3.41464728547741e-07,-1.13215228017476e-05,1.06385933446521e-05,0.999997472854596
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR-Control:24HR,tunelAreaDiff,-1.77246571518439e-06,-1.42226813049275e-05,1.06777498745587e-05,0.995742323528341
+Control:6HR-Control:24HR,tunelAreaDiff,-2.85601148260936e-06,-1.72322821270235e-05,1.15202591618048e-05,0.980953705260022
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:24HR,tunelAreaDiff,-3.24040531046012e-06,-1.56906209002032e-05,9.20981027928298e-06,0.941843636811854
+Control:6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,tunelAreaDiff,-1.08354576742497e-06,-1.35337613571681e-05,1.13666698223181e-05,0.999592064161043
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):24HR,tunelAreaDiff,-1.46793959527574e-06,-1.16334980561141e-05,8.69761886556258e-06,0.995452396619187
+paste(italic("Villin-cre, ELMO1"^{
+    "FL/FL"
+}), italic("ELMO2"^{
+    "FL/FL"
+}), sep = " "):6HR-Control:6HR,tunelAreaDiff,-3.84393827850763e-07,-1.28346094175939e-05,1.20658217618923e-05,0.999997562310423
