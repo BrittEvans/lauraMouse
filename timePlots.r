@@ -18,11 +18,17 @@ myLevels <- c("WT","KO")
 myColors <- c("yellow","purple")
 OUTDIR <- "~/lauraMouse/samantha/"
 
+dat <- read.csv("~/lauraMouse/data/irradiation.csv")
+#dat <- dat %>% rename(Metadata_Frame = Metadata_Genotype)
+myLabels <- c("Control","700 rads")
+myLevels <- c("NOIR","IR")
+myColors <- c("yellow","black")
+OUTDIR <- "~/lauraMouse/timeplots/"
+
 myData <- dat %>%
-  mutate(genotype = factor(GENOTYPE, levels = myLevels, labels=myLabels)) %>%
-  rename(mouse = MOUSE.., treatment = TREATMENT) %>%
-#  filter(mouse != "BM30") %>%
-  group_by(mouse,treatment,genotype,TIMEPOINT) %>%
+  mutate(treatment = factor(Metadata_Treatment, levels=myLevels, labels=myLabels)) %>%
+  rename(mouse = Metadata_Mouse) %>%
+  group_by(mouse,treatment,Metadata_Time) %>%
   summarise( count = n(),
 		   area = mean(AreaShape_Area),
 		   areaSE = sd(AreaShape_Area)/sqrt(count),
@@ -41,9 +47,9 @@ myData <- dat %>%
 		   tunelArea = mean(TUNEL.area.Corrected),
 		   tunelAreaSE = sd(TUNEL.area.Corrected)/sqrt(count) )
 
-uv <- filter(myData, treatment == "UV")
-nouv <- filter(myData, treatment == "NOUV")
-diffs <- inner_join(uv, nouv, by=c("mouse","genotype","TIMEPOINT"), suffix=c(".uv",".nouv")) %>%
+uv <- filter(myData, treatment == "700 rads")
+nouv <- filter(myData, treatment == "Control")
+diffs <- inner_join(uv, nouv, by=c("mouse","Metadata_Time"), suffix=c(".uv",".nouv")) %>%
 	ungroup() %>%
 	mutate(eduDiff = edu.uv - edu.nouv,
 		   eduDiffSE = sqrt(eduSE.uv^2 + eduSE.nouv^2),
@@ -58,41 +64,33 @@ diffs <- inner_join(uv, nouv, by=c("mouse","genotype","TIMEPOINT"), suffix=c(".u
 		   tunelAreaDiff = tunelArea.uv - tunelArea.nouv,
 		   tunelAreaDiffSE = sqrt(tunelAreaSE.uv^2 + tunelAreaSE.nouv^2)
 		   ) %>%
-	select(mouse,genotype,TIMEPOINT,eduDiff,caspDiff,tunelDiff,eduAreaDiff,caspAreaDiff,tunelAreaDiff,
+	select(mouse,Metadata_Time,eduDiff,caspDiff,tunelDiff,eduAreaDiff,caspAreaDiff,tunelAreaDiff,
 		   eduDiffSE, caspDiffSE, tunelDiffSE, eduAreaDiffSE, caspAreaDiffSE, tunelAreaDiffSE)
 
-diffGraph <- melt(diffs,id.vars=c("mouse","genotype","TIMEPOINT"))
+diffGraph <- melt(diffs,id.vars=c("mouse","Metadata_Time"))
 diffGraph$variable <- factor(diffGraph$variable, levels=c("eduDiff","caspDiff","tunelDiff","eduAreaDiff","caspAreaDiff","tunelAreaDiff"),
                                  labels=c("EdU","Caspase-3","TUNEL","EdU Area","Caspase-3 Area","TUNEL Area"))
 
 
-doTimePlots(diffGraph, "EdU",       "UV Intensity - NOUV Intensity", "EDU",       "eduIntensity.png")
-doTimePlots(diffGraph, "Caspase-3", "UV Intensity - NOUV Intensity", "Caspase-3", "caspaseIntensity.png")
-doTimePlots(diffGraph, "TUNEL",     "UV Intensity - NOUV Intensity", "TUNEL",     "tunelIntensity.png")
+doTimePlots(diffGraph, "EdU",       "IR Intensity - NOIR Intensity", "EDU",       "eduIntensity.png")
+doTimePlots(diffGraph, "Caspase-3", "IR Intensity - NOIR Intensity", "Caspase-3", "caspaseIntensity.png")
+doTimePlots(diffGraph, "TUNEL",     "IR Intensity - NOIR Intensity", "TUNEL",     "tunelIntensity.png")
 
-doTimePlots(diffGraph, "EdU Area",       "UV Area - NOUV Area", "EDU",       "eduArea.png")
-doTimePlots(diffGraph, "Caspase-3 Area", "UV Area - NOUV Area", "Caspase-3", "caspaseArea.png")
-doTimePlots(diffGraph, "TUNEL Area",     "UV Area - NOUV Area", "TUNEL",     "tunelArea.png")
+doTimePlots(diffGraph, "EdU Area",       "IR Area - NOIR Area", "EDU",       "eduArea.png")
+doTimePlots(diffGraph, "Caspase-3 Area", "IR Area - NOIR Area", "Caspase-3", "caspaseArea.png")
+doTimePlots(diffGraph, "TUNEL Area",     "IR Area - NOIR Area", "TUNEL",     "tunelArea.png")
 
 # Plots for each mouse
 controlDiffs <- filter(diffs, genotype == "Control")
 genoDiffs <- filter(diffs, genotype != "Control")
 
-doMousePlots(controlDiffs, "UV Intensity - NOUV Intensity", "Caspase-3 - Control", "caspDiff", "caspDiffSE", "caspaseIntensityAllMice-Control.png")
-doMousePlots(controlDiffs, "UV Intensity - NOUV Intensity", "EdU - Control", "eduDiff", "eduDiffSE", "eduIntensityAllMice-Control.png")
-doMousePlots(controlDiffs, "UV Intensity - NOUV Intensity", "TUNEL - Control", "tunelDiff", "tunelDiffSE", "tunelIntensityAllMice-Control.png")
+doMousePlots(diffs, "IR Intensity - NOIR Intensity", "Caspase-3 - Control", "caspDiff", "caspDiffSE", "caspaseIntensityAllMice-Control.png")
+doMousePlots(diffs, "IR Intensity - NOIR Intensity", "EdU - Control", "eduDiff", "eduDiffSE", "eduIntensityAllMice-Control.png")
+doMousePlots(diffs, "IR Intensity - NOIR Intensity", "TUNEL - Control", "tunelDiff", "tunelDiffSE", "tunelIntensityAllMice-Control.png")
 
-doMousePlots(genoDiffs, "UV Intensity - NOUV Intensity", "Caspase-3 - Bai1", "caspDiff", "caspDiffSE", "caspaseIntensityAllMice-Bai1.png")
-doMousePlots(genoDiffs, "UV Intensity - NOUV Intensity", "EdU - Bai1", "eduDiff", "eduDiffSE", "eduIntensityAllMice-Bai1.png")
-doMousePlots(genoDiffs, "UV Intensity - NOUV Intensity", "TUNEL - Bai1", "tunelDiff", "tunelDiffSE", "tunelIntensityAllMice-Bai1.png")
-
-doMousePlots(controlDiffs, "UV Area - NOUV Area", "Caspase-3 - Control", "caspAreaDiff", "caspAreaDiffSE", "caspaseAreaAllMice-Control.png")
-doMousePlots(controlDiffs, "UV Area - NOUV Area", "EdU - Control", "eduAreaDiff", "eduAreaDiffSE", "eduAreaAllMice-Control.png")
-doMousePlots(controlDiffs, "UV Area - NOUV Area", "TUNEL - Control", "tunelAreaDiff", "tunelAreaDiffSE", "tunelAreaAllMice-Control.png")
-
-doMousePlots(genoDiffs, "UV Area - NOUV Area", "Caspase-3 - Bai1", "caspAreaDiff", "caspAreaDiffSE", "caspaseAreaAllMice-Bai1.png")
-doMousePlots(genoDiffs, "UV Area - NOUV Area", "EdU - Bai1", "eduAreaDiff", "eduAreaDiffSE", "eduAreaAllMice-Bai1.png")
-doMousePlots(genoDiffs, "UV Area - NOUV Area", "TUNEL - Bai1", "tunelAreaDiff", "tunelAreaDiffSE", "tunelAreaAllMice-Bai1.png")
+doMousePlots(diffs, "IR Area - NOIR Area", "Caspase-3 - Control", "caspAreaDiff", "caspAreaDiffSE", "caspaseAreaAllMice-Control.png")
+doMousePlots(diffs, "IR Area - NOIR Area", "EdU - Control", "eduAreaDiff", "eduAreaDiffSE", "eduAreaAllMice-Control.png")
+doMousePlots(diffs, "IR Area - NOIR Area", "TUNEL - Control", "tunelAreaDiff", "tunelAreaDiffSE", "tunelAreaAllMice-Control.png")
 
 
 # Plot all the data
@@ -104,12 +102,12 @@ for (i in c("casp","caspArea","edu","eduArea","tunel","tunelArea")) {
 
 # Do the anova's and write out the tukey's
 # TODO: Change the label to make the csv readable
-pVals <- data.frame("label"=c("genotype","TIMEPOINT","interaction"))
+pVals <- data.frame("label"=c("Metadata_Time"))
 writeHeader <- TRUE
 for (x in c("eduDiff","caspDiff","tunelDiff","eduAreaDiff","caspAreaDiff","tunelAreaDiff")) {
-  a <- aov(get(x) ~ genotype*TIMEPOINT, data=diffs)
-  pVals[x] <- summary(a)[[1]][["Pr(>F)"]][1:3]
-  tky = cbind(x, TukeyHSD(a)$`genotype:TIMEPOINT`)
+  a <- aov(get(x) ~ Metadata_Time, data=diffs)
+  pVals[x] <- summary(a)[[1]][["Pr(>F)"]][1]
+  tky = cbind(x, TukeyHSD(a)$`Metadata_Time`)
   write.table(tky, file=paste(OUTDIR,"/tukey.csv", sep=""), append=!writeHeader, col.names=writeHeader, quote=FALSE, sep=",")
   writeHeader <- FALSE
 }
@@ -120,16 +118,16 @@ doTimePlots <- function(allDiffData,myVar,myYlabel,myTitle,fileName,myDodge=0.4)
 	diffGraph <- filter(allDiffData, variable == myVar)
 
     diffError <- diffGraph %>%
-      group_by(genotype,TIMEPOINT) %>%
+      group_by(Metadata_Time) %>%
       summarise( m = mean(value), se = sd(value)/sqrt(n()) )
 
     ggplot() + 
 	  geom_hline(aes(yintercept=0), linetype="dotted") +
-	  geom_line(aes(x = TIMEPOINT, y = m, group=genotype, colour=genotype), size = 1.5, linetype = 2, position=position_dodge(myDodge), data=diffError) +
-      geom_dotplot(aes(y = value, x = TIMEPOINT, fill = genotype), data = diffGraph,
+	  geom_line(aes(x = Metadata_Time, y = m), size = 1.5, linetype = 2, position=position_dodge(myDodge), data=diffError) +
+      geom_dotplot(aes(y = value, x = Metadata_Time), data = diffGraph,
                    binaxis='y', stackdir='center', dotsize=1, stackgroups = TRUE, position=position_dodge(myDodge)) +
-      geom_errorbar(aes(x = TIMEPOINT, fill=genotype, ymin=m-se, ymax=m), width=.2, position=position_dodge(myDodge), data=diffError) +
-      geom_errorbar(aes(x = TIMEPOINT, fill=genotype, ymin=m, ymax=m+se), width=.2, position=position_dodge(myDodge), data=diffError) +
+      geom_errorbar(aes(x = Metadata_Time, ymin=m-se, ymax=m), width=.2, position=position_dodge(myDodge), data=diffError) +
+      geom_errorbar(aes(x = Metadata_Time, ymin=m, ymax=m+se), width=.2, position=position_dodge(myDodge), data=diffError) +
       theme_classic(base_size=14) +
       theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
             legend.text.align = 0,
@@ -154,13 +152,13 @@ doTimePlots <- function(allDiffData,myVar,myYlabel,myTitle,fileName,myDodge=0.4)
 #tp <- "3HR"
 
 comparePlotsByTime <- function(allData, colName, tp) {
- compData <- myData %>% filter(TIMEPOINT == tp)
+ compData <- myData %>% filter(Metadata_Time == tp)
  fileName <- paste(colName,tp,"png",sep=".")
- ggplot(compData, aes(x = treatment, y = get(colName), label=mouse, colour = genotype, group = mouse, fill = genotype)) +
+ ggplot(compData, aes(x = treatment, y = get(colName), label=mouse, group = mouse )) +
    geom_line(size=1.5) +
    geom_text(colour="black") +
    #geom_point(colour="black",pch=21, size=5) +
-   facet_wrap(~ genotype, labeller=label_parsed) +
+   #facet_wrap(~ genotype, labeller=label_parsed) +
    scale_colour_manual(name="", values=myColors, guide=FALSE) +
    scale_fill_manual(name="", values=myColors, guide=FALSE) +
     theme_classic(base_size=14) +
@@ -180,9 +178,9 @@ doMousePlots <- function(myData, myYlabel, myTitle, colName, errName, fileName) 
 	myDodge <- 0.3
     ggplot() +
 	  geom_hline(aes(yintercept=0), linetype="dotted") +
-	  geom_line(aes(x = TIMEPOINT, y = get(colName), group=mouse, colour=mouse), size = 1.5, linetype = 2, position=position_dodge(myDodge), data=myData) +
-      geom_errorbar(aes(x = TIMEPOINT, fill=mouse, colour=mouse, ymin=get(colName)-get(errName), ymax=get(colName)), width=.2, position=position_dodge(myDodge), data=myData) +
-      geom_errorbar(aes(x = TIMEPOINT, fill=mouse, colour=mouse, ymin=get(colName), ymax=get(colName)+get(errName)), width=.2, position=position_dodge(myDodge), data=myData) +
+	  geom_line(aes(x = Metadata_Time, y = get(colName), group=mouse, colour=mouse), size = 1.5, linetype = 2, position=position_dodge(myDodge), data=myData) +
+      geom_errorbar(aes(x = Metadata_Time, fill=mouse, colour=mouse, ymin=get(colName)-get(errName), ymax=get(colName)), width=.2, position=position_dodge(myDodge), data=myData) +
+      geom_errorbar(aes(x = Metadata_Time, fill=mouse, colour=mouse, ymin=get(colName), ymax=get(colName)+get(errName)), width=.2, position=position_dodge(myDodge), data=myData) +
       theme_classic(base_size=14) +
       theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
             legend.text.align = 0,
