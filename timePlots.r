@@ -32,9 +32,16 @@ myLevels <- c("NOIR","IR")
 myColors <- c("yellow","black")
 OUTDIR <- "~/lauraMouse/timeplotsLaura/"
 
+dat <- read.csv("~/lauraMouse/data/irradiationCombined.csv")
+#dat <- dat %>% rename(Metadata_Frame = Metadata_Genotype)
+myLabels <- c("Control","700 rads")
+myLevels <- c("NOIR","IR")
+myColors <- c("yellow","black")
+OUTDIR <- "~/lauraMouse/timeplotsCombined/"
+
 myData <- dat %>%
   mutate(treatment = factor(Metadata_Treatment, levels=myLevels, labels=myLabels)) %>%
-  rename(mouse = Metadata_Mouse) %>%
+  rename(mouse = Metadata_Mouse, genotype = GENOTYPE) %>%
   group_by(mouse,treatment,Metadata_Time) %>%
   summarise( count = n(),
 		   area = mean(AreaShape_Area),
@@ -88,8 +95,8 @@ doTimePlots(diffGraph, "Caspase-3 Area", "IR Area - NOIR Area", "Caspase-3", "ca
 doTimePlots(diffGraph, "TUNEL Area",     "IR Area - NOIR Area", "TUNEL",     "tunelArea.png")
 
 # Plots for each mouse
-controlDiffs <- filter(diffs, genotype == "Control")
-genoDiffs <- filter(diffs, genotype != "Control")
+#controlDiffs <- filter(diffs, genotype == "Control")
+#genoDiffs <- filter(diffs, genotype != "Control")
 
 doMousePlots(diffs, "IR Intensity - NOIR Intensity", "Caspase-3 - Control", "caspDiff", "caspDiffSE", "caspaseIntensityAllMice-Control.png")
 doMousePlots(diffs, "IR Intensity - NOIR Intensity", "EdU - Control", "eduDiff", "eduDiffSE", "eduIntensityAllMice-Control.png")
