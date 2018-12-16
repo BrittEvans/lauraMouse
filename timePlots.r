@@ -109,7 +109,7 @@ doMousePlots(diffs, "IR Area - NOIR Area", "TUNEL - Control", "tunelAreaDiff", "
 
 # Plot all the data
 for (i in c("casp","caspArea","edu","eduArea","tunel","tunelArea")) {
-	for (t in c("3HR","6HR","12HR","24HR")) {
+	for (t in c("0HR","3HR","6HR","12HR","24HR")) {
 		comparePlotsByTime(myData, i, t)
 	}
 }
@@ -154,7 +154,7 @@ doTimePlots <- function(allDiffData,myVar,myYlabel,myTitle,fileName,myDodge=0.4)
 		   ) +
       labs(y=myYlabel,x="") +
 	  ggtitle(myTitle) +
-	  scale_x_discrete(limits=c("3HR","6HR","12HR","24HR")) +
+	  scale_x_discrete(limits=c("0HR","3HR","6HR","12HR","24HR")) +
       scale_fill_manual(values=myColors, name="", labels=myLabels) +
       scale_colour_manual(values=myColors, name="", labels=myLabels)
       ggsave(filename=fileName, path = OUTDIR, width=10, height=7, bg="transparent")
