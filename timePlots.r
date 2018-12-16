@@ -25,6 +25,13 @@ myLevels <- c("NOIR","IR")
 myColors <- c("yellow","black")
 OUTDIR <- "~/lauraMouse/timeplots/"
 
+dat <- read.csv("~/lauraMouse/data/CsIrradiatedNov2018.csv")
+#dat <- dat %>% rename(Metadata_Frame = Metadata_Genotype)
+myLabels <- c("Control","700 rads")
+myLevels <- c("NOIR","IR")
+myColors <- c("yellow","black")
+OUTDIR <- "~/lauraMouse/timeplotsLaura/"
+
 myData <- dat %>%
   mutate(treatment = factor(Metadata_Treatment, levels=myLevels, labels=myLabels)) %>%
   rename(mouse = Metadata_Mouse) %>%
