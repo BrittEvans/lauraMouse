@@ -207,6 +207,6 @@ doMousePlots <- function(myData, myYlabel, myTitle, colName, errName, fileName) 
 		   ) +
       labs(y=myYlabel,x="") +
 	  ggtitle(myTitle) +
-	  scale_x_discrete(limits=c("3HR","6HR","12HR","24HR"))
+	  scale_x_discrete(limits=c("0HR","3HR","6HR","12HR","24HR"))
       ggsave(filename=fileName, path = OUTDIR, width=10, height=7, bg="transparent")
 }
