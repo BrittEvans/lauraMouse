@@ -140,6 +140,32 @@ for (x in c("eduDiff","caspDiff","tunelDiff","eduAreaDiff","caspAreaDiff","tunel
   writeHeader <- FALSE
 }
 
+# t-test for each variable and time point
+out <- NULL
+for (var in c("AreaShape_Area", "AreaShape_Perimeter", "CASP.intensity.corrected", "EDU.Intensity.corrected", "TUNEL.Intensity.Corrected", "CASP.area.corrected", "EDU.area.corrected", "TUNEL.area.Corrected")) {
+	for (t in c("0HR","3HR","6HR","12HR","24HR")) {
+		result <- t.test(formula = get(var) ~ Metadata_Treatment, data=dat, subset = Metadata_Time == t)
+		out <- rbind(out, data.frame(var=var, t=t, pVal=result$p.value))
+	}
+}
+write.table(out, file=paste(OUTDIR,"/pValuesByTime.csv", sep=""), append=FALSE, col.names=c("Measurement","Time","Pval"), row.names=FALSE, quote=FALSE, sep=",")
+
+# t-test for each variable, time point, and mouse
+out <- NULL
+mouseTime <- distinct(dat, Metadata_Mouse, Metadata_Time)
+for (var in c("AreaShape_Area", "AreaShape_Perimeter", "CASP.intensity.corrected", "EDU.Intensity.corrected", "TUNEL.Intensity.Corrected", "CASP.area.corrected", "EDU.area.corrected", "TUNEL.area.Corrected")) {
+	for ( mT in 1:nrow(mouseTime)) {
+		t <- mouseTime$Metadata_Time[mT]
+		mouse <- mouseTime$Metadata_Mouse[mT]
+		try(out <- rbind(out, data.frame(var=var, mouse=mouse, t=t,
+			 pVal=t.test(formula = get(var) ~ Metadata_Treatment, data=dat, subset = Metadata_Time == t & Metadata_Mouse == mouse)$p.value)))
+	}
+}
+write.table(out, file=paste(OUTDIR,"/pValuesByMouseAndTime.csv", sep=""), append=FALSE, col.names=c("Measurement","Mouse","Time","Pval"), row.names=FALSE, quote=FALSE, sep=",")
+
+
+
+# Functions...
 
 doTimePlots <- function(allDiffData,myVar,myYlabel,myTitle,fileName,myDodge=0.4) {
 
