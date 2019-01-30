@@ -97,14 +97,18 @@ diffs <- inner_join(uv, nouv, by=c("mouse","Metadata_Time"), suffix=c(".uv",".no
 		   caspAreaDiff = caspArea.uv - caspArea.nouv,
 		   caspAreaDiffSE = sqrt(caspAreaSE.uv^2 + caspAreaSE.nouv^2),
 		   tunelAreaDiff = tunelArea.uv - tunelArea.nouv,
-		   tunelAreaDiffSE = sqrt(tunelAreaSE.uv^2 + tunelAreaSE.nouv^2)
+		   tunelAreaDiffSE = sqrt(tunelAreaSE.uv^2 + tunelAreaSE.nouv^2),
+		   areaDiff = area.uv - area.nouv,
+		   areaDiffSE = sqrt(areaSE.uv^2 + areaSE.nouv^2),
+		   perimeterDiff = perimeter.uv - perimeter.nouv,
+		   perimeterDiffSE = sqrt(perimeterSE.uv^2 + perimeterSE.nouv^2)
 		   ) %>%
 	select(mouse,Metadata_Time,eduDiff,caspDiff,tunelDiff,eduAreaDiff,caspAreaDiff,tunelAreaDiff,
-		   eduDiffSE, caspDiffSE, tunelDiffSE, eduAreaDiffSE, caspAreaDiffSE, tunelAreaDiffSE)
+		   eduDiffSE, caspDiffSE, tunelDiffSE, eduAreaDiffSE, caspAreaDiffSE, tunelAreaDiffSE, areaDiff, areaDiffSE, perimeterDiff, perimeterDiffSE)
 
 diffGraph <- melt(diffs,id.vars=c("mouse","Metadata_Time"))
-diffGraph$variable <- factor(diffGraph$variable, levels=c("eduDiff","caspDiff","tunelDiff","eduAreaDiff","caspAreaDiff","tunelAreaDiff"),
-                                 labels=c("EdU","Caspase-3","TUNEL","EdU Area","Caspase-3 Area","TUNEL Area"))
+diffGraph$variable <- factor(diffGraph$variable, levels=c("eduDiff","caspDiff","tunelDiff","eduAreaDiff","caspAreaDiff","tunelAreaDiff","areaDiff","perimeterDiff"),
+                                 labels=c("EdU","Caspase-3","TUNEL","EdU Area","Caspase-3 Area","TUNEL Area", "Area", "Perimeter"))
 
 
 doTimePlots(diffGraph, "EdU",       "IR Intensity - NOIR Intensity", "EDU",       "eduIntensity.png")
@@ -114,6 +118,9 @@ doTimePlots(diffGraph, "TUNEL",     "IR Intensity - NOIR Intensity", "TUNEL",   
 doTimePlots(diffGraph, "EdU Area",       "IR Area - NOIR Area", "EDU",       "eduArea.png")
 doTimePlots(diffGraph, "Caspase-3 Area", "IR Area - NOIR Area", "Caspase-3", "caspaseArea.png")
 doTimePlots(diffGraph, "TUNEL Area",     "IR Area - NOIR Area", "TUNEL",     "tunelArea.png")
+
+doTimePlots(diffGraph, "Area",           "IR Area - NOIR Area", "Area",     "area.png")
+doTimePlots(diffGraph, "Perimeter",     "IR Perimeter - NOIR Perimeter", "Perimeter",     "perimeter.png")
 
 # Plots for each mouse
 #controlDiffs <- filter(diffs, genotype == "Control")
@@ -127,6 +134,8 @@ doMousePlots(diffs, "IR Area - NOIR Area", "Caspase-3 - Control", "caspAreaDiff"
 doMousePlots(diffs, "IR Area - NOIR Area", "EdU - Control", "eduAreaDiff", "eduAreaDiffSE", "eduAreaAllMice-Control.png")
 doMousePlots(diffs, "IR Area - NOIR Area", "TUNEL - Control", "tunelAreaDiff", "tunelAreaDiffSE", "tunelAreaAllMice-Control.png")
 
+doMousePlots(diffs, "IR Area - NOIR Area", "Area", "areaDiff", "areaDiffSE", "AreaAllMice-Control.png")
+doMousePlots(diffs, "IR Perimeter - NOIR Perimeter", "Perimeter", "perimeterDiff", "perimeterDiffSE", "PerimeterAllMice-Control.png")
 
 # Plot all the data
 for (i in c("casp","caspArea","edu","eduArea","tunel","tunelArea")) {
