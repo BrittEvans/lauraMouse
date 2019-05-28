@@ -60,6 +60,27 @@ myLevels <- c("NOIR","IR")
 myColors <- c("yellow","black")
 OUTDIR <- "~/lauraMouse/timeplotsCX18CX22/"
 
+dat <- read.csv("~/lauraMouse/data/CsIrradiatedApril2019.csv")
+#dat <- dat %>% rename(Metadata_Frame = Metadata_Genotype)
+myLabels <- c("Control","700 rads")
+myLevels <- c("NOIR","IR")
+myColors <- c("yellow","black")
+OUTDIR <- "~/lauraMouse/timeplotsApril2019/"
+
+
+dat2 <- read.csv("~/lauraMouse/data/CsIrradiatedNovAndJan2019.csv")
+OUTDIR <- "~/lauraMouse/timeplotsAllCombined/"
+
+dat1 <- dat %>%
+  filter(Metadata_Time != "3HR") %>%
+  filter(Metadata_Well %in% c("1","2"))
+
+dat <- bind_rows(dat1, dat2)
+names(dat1)
+names(dat2)
+
+
+
 myData <- dat %>%
   mutate(treatment = factor(Metadata_Treatment, levels=myLevels, labels=myLabels)) %>%
   rename(mouse = Metadata_Mouse, genotype = GENOTYPE) %>%
