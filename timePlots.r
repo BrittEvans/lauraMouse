@@ -158,6 +158,14 @@ doMousePlots(diffs, "IR Area - NOIR Area", "TUNEL - Control", "tunelAreaDiff", "
 doMousePlots(diffs, "IR Area - NOIR Area", "Area", "areaDiff", "areaDiffSE", "AreaAllMice-Control.png")
 doMousePlots(diffs, "IR Perimeter - NOIR Perimeter", "Perimeter", "perimeterDiff", "perimeterDiffSE", "PerimeterAllMice-Control.png")
 
+
+doMousePlots(uv, "IR Area", "Caspase-3", "caspArea", "caspAreaSE", "caspaseAreaAllMice.png")
+doMousePlots(nouv, "Control", "Caspase-3", "caspArea", "caspAreaSE", "caspaseAreaControlAllMice.png")
+doMousePlots(uv, "IR Area", "EdU", "eduArea", "eduAreaSE", "eduAreaAllMice.png")
+doMousePlots(nouv, "Control", "EdU", "eduArea", "eduAreaSE", "eduAreaControlAllMice.png")
+doMousePlots(uv, "IR Area", "TUNEL", "tunelArea", "tunelAreaSE", "tunelAreaAllMice.png")
+doMousePlots(nouv, "Control", "TUNEL", "tunelArea", "tunelAreaSE", "tunelAreaControlAllMice.png")
+
 # Plot all the data
 for (i in c("casp","caspArea","edu","eduArea","tunel","tunelArea")) {
 	for (t in c("0HR","3HR","6HR","12HR","24HR")) {
