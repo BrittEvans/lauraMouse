@@ -222,19 +222,23 @@ doTimePlots <- function(allDiffData,myVar,myYlabel,myTitle,fileName,myDodge=0.4)
       theme_classic(base_size=14) +
       theme( axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
             legend.text.align = 0,
+			text = element_text(size=8),
+			axis.title.x=element_blank(),
+			axis.title.y=element_blank(),
             axis.line.y = element_line(colour = 'black', size=0.5, linetype='solid'),
             rect = element_rect(fill = "transparent"),
             plot.background = element_rect(fill = "transparent", colour= NA),
             panel.background = element_rect(fill = "transparent", colour= NA),
-            legend.text=element_text(size=14),
+            legend.text=element_text(size=4),
 			plot.title = element_text(hjust = 0.5)
 		   ) +
-      labs(y=myYlabel,x="") +
-	  ggtitle(myTitle) +
+      labs(y="",x="") +
+      #labs(y=myYlabel,x="") +
+	  #ggtitle(myTitle) +
 	  scale_x_discrete(limits=c("0HR","3HR","6HR","12HR","24HR")) +
       scale_fill_manual(values=myColors, name="", labels=myLabels) +
       scale_colour_manual(values=myColors, name="", labels=myLabels)
-      ggsave(filename=fileName, path = OUTDIR, width=10, height=7, bg="transparent")
+      ggsave(filename=fileName, path = OUTDIR, width=2.25, height=1.5, units="in", dpi=1200, bg="transparent")
 }
 
 
